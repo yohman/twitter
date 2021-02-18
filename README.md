@@ -4,7 +4,17 @@ A python script that archives tweets into a csv file.
 
 ## Usage
 
-If running locally:
+### Clone this repo to JupyterHub
+
+UCLA students:
+
+Use this [gitpuller link](https://jupyter.idre.ucla.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fyohman%2Ftwitter&urlpath=tree%2Ftwitter%2F&branch=master) to clone this repo into your JupyterHub account.
+
+### Install requirements
+
+![terminal](images/terminal.png)
+
+Once inside your JupyterHub, open a new terminal window, and enter the following command:
 
 ```
 pip install -r requirements.txt
