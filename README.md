@@ -81,7 +81,7 @@ import re
 from textblob import TextBlob
 
 # get the tweets
-df = pd.read_csv('naomi.csv')
+df = pd.read_csv('tweets.csv')
 
 # drop duplicates
 df = df.drop_duplicates()
