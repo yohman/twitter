@@ -15,7 +15,7 @@ import csv
 from csv import DictWriter
 
 # for geocoding
-import osmnx as ox
+import geocoder
 
 # to parse arguments passed by user
 import argparse
@@ -86,7 +86,7 @@ access_token_secret = input("Your access token secret: ")
 
 auth = tw.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
-api = tw.API(auth, wait_on_rate_limit=True)
+api = tw.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
 ########################################
 
@@ -133,10 +133,10 @@ def get_tweets():
 
         if args.location != '':
             
-            g = ox.geocoder.geocode(args.location)
+            g = geocoder.osm(args.location)
 
             # concatenate the results
-            geocode = '"'+str(g[0])+','+str(g[1])+','+args.distance+'"'
+            geocode = '"'+str(g.osm['y'])+','+str(g.osm['x'])+','+args.distance+'"'
             
             print('Location requested for '+args.location)
             print(geocode)
@@ -172,9 +172,9 @@ def get_tweets():
 
             tweetfile.close()
 
-        # print some tweets
-        print('sample tweet 1: ' + df.sample().iloc[0]['text'])
-        print('sample tweet 2: ' + df.sample().iloc[0]['text'])
+        # print some tweets (just show first 50 characters)
+        print('sample tweet 1: ' + df.sample().iloc[0]['text'][0:50]+'...')
+        print('sample tweet 2: ' + df.sample().iloc[0]['text'][0:50]+'...')
 
         # run this every x seconds
         time.sleep(args.rest)
@@ -195,8 +195,11 @@ i = 1
 
 # start the loop
 print('Starting the twitter scraper for "'+args.q+'". Running query ' + str(args.times) + ' times every ' + str(args.rest) + ' seconds.')
+
 while i <= args.times:
+    print('###################################################################')
     print('Getting tweets #' + str(i) + '...')
+    print('###################################################################')
     get_tweets()
 
     i += 1
