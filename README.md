@@ -14,7 +14,7 @@ Use this [gitpuller link](https://jupyter.idre.ucla.edu/hub/user-redirect/git-pu
 
 ![terminal](images/terminal.png)
 
-Once inside your JupyterHub, open a new terminal window, navigate to the twitter folder (`cd twitter`), and enter the following command:
+Once inside your JupyterHub, open a new terminal window (as shown above), navigate to the twitter folder (`cd twitter`), and enter the following command:
 
 ```
 pip install -r requirements.txt
