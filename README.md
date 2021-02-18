@@ -45,7 +45,7 @@ python twitter.py --q 'covid' --times 100 --rest 300 --filename 'covid.csv'
 
 #### Query with location
 
-Example: Tweets from within 100km of Los Angeles custom filename
+Example: Tweets from within 100km of Los Angeles with custom filename
 
 ```console
 python twitter.py --q 'covid' --location 'Los Angeles' --distance '100km' --filename 'covid_la.csv'
@@ -129,4 +129,4 @@ plt.text(df.polarity.mean()*1.1, max_ylim*0.9, 'Mean: {:.2f}'.format(df.polarity
 
 plt.show();
 ```
-
+![polarity](images/polarity.png)
