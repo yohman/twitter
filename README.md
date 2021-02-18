@@ -4,6 +4,12 @@ A python script that archives tweets into a csv file.
 
 ## Usage
 
+If running locally:
+
+```
+pip install -r requirements.txt
+```
+
 Arguments:
 
 - `--times` (default=10): How many times to execute the command to get tweets
@@ -16,4 +22,18 @@ Arguments:
 
 ```python
 python twitter.py --q 'covid'
+```
+### Query with different time intervals
+
+Example run 100 times every 30 seconds:
+
+```python
+python twitter.py --q 'covid' --times 100 --rest 30
+```
+### Query with location
+
+Example: Tweets from within 100km of Los Angeles
+
+```python
+python twitter.py --q 'covid' --location 'Los Angeles' --distance '100km'
 ```
