@@ -163,7 +163,7 @@ def get_tweets():
         df.columns = ['created_at','text','screen_name','profile_image']
 
         # append the new data to csv file (add the bus route to the file name)
-        with open(args.filename, 'a') as tweetfile: 
+        with open(args.filename, 'a',encoding='utf-8-sig') as tweetfile: 
 
             dictwriter = DictWriter(tweetfile, fieldnames=fields) 
 
