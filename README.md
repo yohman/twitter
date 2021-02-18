@@ -75,9 +75,13 @@ df = df.drop_duplicates()
 
 ```
 
-Full code sample to create a polarity index, and add a histogram:
+Full code sample to create a word cloud, polarity index, and add a histogram:
 
 ```python
+#
+# Libraries
+#
+
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -87,11 +91,21 @@ import re
 # for sentiment analysis
 from textblob import TextBlob
 
-# get the tweets
+# word clouds
+from wordcloud import WordCloud, STOPWORDS# get the tweets
+
+#
+# Bring in tweets
+#
+
 df = pd.read_csv('tweets.csv')
 
 # drop duplicates
 df = df.drop_duplicates()
+
+#
+# Clean the tweets
+#
 
 # function to clean tweets using regular expressions
 def clean_tweet(tweet):
@@ -104,7 +118,29 @@ df['clean_text'] = ''
 for i, row in df.iterrows():
     clean = clean_tweet(row.text)
     df.at[i,'clean_text'] = clean
+
+#
+# Word cloud
+#
+
+# now put every word from every tweet into a single variable
+all_text = ' '.join(df['clean_text'])
     
+# create the word cloud
+wordcloud = WordCloud(width=1200, 
+                      height=800,
+                      background_color="white").generate(all_text)
+
+# Display the WordCloud                    
+plt.figure(figsize=(12,12))
+plt.imshow(wordcloud, interpolation="bilinear")
+plt.axis("off")
+plt.show()    
+    
+#
+# Sentiment Analysis
+#
+
 # create an new (empty) column for polarity
 df['polarity']=''
 
@@ -136,4 +172,5 @@ plt.text(df.polarity.mean()*1.1, max_ylim*0.9, 'Mean: {:.2f}'.format(df.polarity
 
 plt.show();
 ```
+![word cloud](images/wordcloud.png)
 ![polarity](images/polarity.png)
