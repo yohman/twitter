@@ -20,20 +20,20 @@ Arguments:
 
 ### Simple query
 
-```python
+```shell
 python twitter.py --q 'covid'
 ```
 ### Query with different time intervals
 
 Example run 100 times every 30 seconds:
 
-```python
+```shell
 python twitter.py --q 'covid' --times 100 --rest 30
 ```
 ### Query with location
 
 Example: Tweets from within 100km of Los Angeles
 
-```python
+```shell
 python twitter.py --q 'covid' --location 'Los Angeles' --distance '100km'
 ```
