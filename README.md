@@ -2,6 +2,13 @@
 
 A python script that archives tweets into a csv file.
 
+This script requires you to have a [Twitter Developer Account](https://developer.twitter.com/en/apply-for-access) with an active app with the following access codes:
+
+- consumer key
+- consumer secret
+- access token
+- access token secret
+
 ## Usage
 
 ### 1. Clone this repo to JupyterHub
