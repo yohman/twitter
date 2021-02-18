@@ -8,7 +8,7 @@ A python script that archives tweets into a csv file.
 
 UCLA students:
 
-Use this [gitpuller link](https://jupyter.idre.ucla.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fyohman%2Ftwitter&urlpath=tree%2Ftwitter%2F&branch=master) to clone this repo into your JupyterHub account.
+Use this [gitpuller link](https://jupyter.idre.ucla.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fyohman%2Ftwitter&urlpath=tree%2Ftwitter%2F&branch=main) to clone this repo into your JupyterHub account.
 
 ### 2. Install requirements
 
