@@ -41,7 +41,7 @@ parser.add_argument("--q",
 
 # optional arguments
 parser.add_argument("--times", 
-                    default=20, 
+                    default=10, 
                     type=int, 
                     required=False, 
                     help="How many times to run (default=20)")
