@@ -21,7 +21,13 @@ pip install -r requirements.txt
 ```
 ### 3. Running the twitter.py script
 
-Arguments:
+Once the requirements have been installed, you can begin your twitter archive by running the following command:
+
+```console
+python twitter.py --q 'covid'
+```
+
+There are additional arguments you can pass to refine your search. Here are a list of available arguments:
 
 - `--times` (default=10): How many times to execute the command to get tweets
 - `--rest` (default=60): How many seconds to rest between calls to get tweets
@@ -29,23 +35,29 @@ Arguments:
 - `--distance` (default=50km): Distance in km from the given location to get tweets from
 - `--filename` (default="tweets.csv"): csv filename to save your tweets in
 
-### Simple query
+#### Query with different time intervals and custom filename
+
+Example: Run 100 times, every 5 minutes, name the file `covid.csv`:
 
 ```console
-python twitter.py --q 'covid'
+python twitter.py --q 'covid' --times 100 --rest 300 --filename 'covid.csv'
 ```
-### Query with different time intervals
 
-Example run 100 times every 30 seconds:
+#### Query with location
+
+Example: Tweets from within 100km of Los Angeles custom filename
 
 ```console
-python twitter.py --q 'covid' --times 100 --rest 30
+python twitter.py --q 'covid' --location 'Los Angeles' --distance '100km' --filename 'covid_la.csv'
 ```
 
-### Query with location
+### 4. Analyzing tweets in Jupyter Notebook
 
-Example: Tweets from within 100km of Los Angeles
+Open a new Python Jupyter Notebook and import your tweets
 
-```console
-python twitter.py --q 'covid' --location 'Los Angeles' --distance '100km'
+```python
+import pandas as pd
+
+df = pd.read_csv('tweets.csv')
 ```
+
