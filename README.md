@@ -21,7 +21,7 @@ pip install -r requirements.txt
 ```
 ### 3. Running the twitter.py script
 
-Once the requirements have been installed, you can begin your twitter archive by running the following command:
+Once the requirements have been installed, you can begin your twitter archive by running the following command. Replace 'covid' with your search term of interest. Check out [these guidelines](https://developer.twitter.com/en/docs/twitter-api/v1/rules-and-filtering/search-operators) for custom searches:
 
 ```console
 python twitter.py --q 'covid'
