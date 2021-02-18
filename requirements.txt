@@ -1,7 +1,6 @@
 pandas
 tweepy
 osmnx
-csv
 argparse
 time
 sys
