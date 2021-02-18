@@ -59,5 +59,74 @@ Open a new Python Jupyter Notebook and import your tweets
 import pandas as pd
 
 df = pd.read_csv('tweets.csv')
+
+# override the default so that we can see the entire text in the column
+pd.set_option('display.max_colwidth', None)
+
+# drop duplicates
+df = df.drop_duplicates()
+
+```
+
+Full code sample to create a polarity index, and add a histogram:
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# regular expressions
+import re
+
+# for sentiment analysis
+from textblob import TextBlob
+
+# get the tweets
+df = pd.read_csv('naomi.csv')
+
+# drop duplicates
+df = df.drop_duplicates()
+
+# function to clean tweets using regular expressions
+def clean_tweet(tweet):
+    return ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)", "", tweet).split())
+
+# create a new column for the clean text
+df['clean_text'] = ''
+
+# loop and add the cleaned up text to the new column
+for i, row in df.iterrows():
+    clean = clean_tweet(row.text)
+    df.at[i,'clean_text'] = clean
+    
+# create an new (empty) column for polarity
+df['polarity']=''
+
+# loop through every row and add the polarity value in our new column
+for i, row in df.iterrows():
+    a = TextBlob(row.clean_text)
+    df.at[i,'polarity'] = a.polarity
+
+# set up the histogram
+plt.figure(figsize=(10,6))
+
+n, bins, patches = plt.hist(df.polarity, 
+                            bins=20, 
+                            facecolor='blue', 
+                            alpha=0.5)
+
+plt.xlabel('Polarity')
+plt.ylabel('Count')
+
+# add the mean
+plt.axvline(df.polarity.mean(), 
+            color='k', 
+            linestyle='dashed', 
+            linewidth=1)
+
+# label the mean
+min_ylim, max_ylim = plt.ylim()
+plt.text(df.polarity.mean()*1.1, max_ylim*0.9, 'Mean: {:.2f}'.format(df.polarity.mean()))
+
+plt.show();
 ```
 
