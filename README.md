@@ -92,7 +92,7 @@ import re
 from textblob import TextBlob
 
 # word clouds
-from wordcloud import WordCloud, STOPWORDS# get the tweets
+from wordcloud import WordCloud, STOPWORDS
 
 #
 # Bring in tweets
